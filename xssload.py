@@ -8,8 +8,8 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1)
 
 # ====================== AYARLAR ======================
-TELEGRAM_TOKEN = "8767985062:AAHWwP9ev6zOPr3_0oe7bdlpLUIA7cMPVRI"
-TELEGRAM_CHAT_ID = "-1003987215301"
+TELEGRAM_TOKEN = "8668175695:AAGDf2DBNTSG0Gf3yX_bwtNOsmCwsAv-9sc"
+TELEGRAM_CHAT_ID = "-1003988742520"
 
 def safe_decode(b64_str):
     if not b64_str or b64_str in ["undefined", "null", ""]: return "Yok"
